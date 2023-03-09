@@ -9,41 +9,97 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+  
 
   *:focus,
   *:active {
     -webkit-tap-highlight-color: transparent;
   }
+
+
   * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
 
+
+  
   body {
     font-family: 'Rubik', sans-serif;
     font-style: normal;
-    width: 100vw;
-    height: 100vh;
+    max-width: 100vw;
+    min-height: 100vh;
     background-color: #F5F6FA;
   }
 
 
+  /* Heading (L) */
+
+  h1 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+  }
+
+  
+  /* Heading (M) */
+
+
+  h2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+  }
+
+
+  /* Heading (S) */
+
+
+  h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+  }
+
+  
+    /* Body (M) */
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+  }
+
+
+
+  
   input,
   button {
     outline: none;
   }
+
+
   a {
     text-decoration: none;
   }
+
+
+  
   button,
   svg {
     cursor: pointer;
   }
 
+
   a {
     text-decoration: none;
   }
+  
 
   input,
   fieldset,
