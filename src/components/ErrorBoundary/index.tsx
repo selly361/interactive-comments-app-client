@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo } from "react";
 import { IProps, IState } from "./types";
 
 class ErrorBoundary extends Component<IProps, IState> {
