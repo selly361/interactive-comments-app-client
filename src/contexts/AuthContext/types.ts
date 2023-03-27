@@ -16,7 +16,6 @@ export interface AuthContextProps {
    login: ILogIn
    signup: ISignUp
    logout: () => void
-   refreshToken: () => void
 }
 
 export interface IProps {

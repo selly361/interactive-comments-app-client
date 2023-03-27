@@ -8,8 +8,7 @@ export const AuthContext = createContext<AuthContextProps>({
    isAuthenticated: false,
    login: async () => {},
    logout: async () => {},
-   signup: async () => {},
-   refreshToken: async () => {},
+   signup: async () => {}
 })
 
 function AuthContextProvider({ children }: IProps) {
@@ -117,7 +116,7 @@ function AuthContextProvider({ children }: IProps) {
    }
 
    return (
-      <AuthContext.Provider value={{ user, isAuthenticated, login, logout, signup, refreshToken }}>
+      <AuthContext.Provider value={{ user, isAuthenticated, login, logout, signup }}>
          {children}
       </AuthContext.Provider>
    )
