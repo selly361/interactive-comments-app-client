@@ -1,16 +1,7 @@
 import React from 'react'
+import { RegisterFormData } from "./Register.types"
 import { useAuthContext } from 'hooks/useAuthContext'
 import { useForm } from 'react-hook-form'
-
-interface RegisterFormProps {
-  onSubmit: (data: RegisterFormData) => void
-}
-
-interface RegisterFormData {
-  email: string
-  password: string
-  username: string
-}
 
 function RegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>();
@@ -52,7 +43,7 @@ function RegisterForm() {
           required: true,
           pattern: {
             value: /^[A-Za-z]\w{3,13}[A-Za-z0-9]$/,
-            message: 'Username should be 4-14 alphanumeric characters starting with a letter'
+            message: 'Username should be 3-14 alphanumeric characters starting with a letter'
           }
         })} />
         {errors.username && <span>{errors.username.message}</span>}
