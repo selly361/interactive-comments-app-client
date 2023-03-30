@@ -2,7 +2,7 @@ import {
    PrimaryButton,
    SecondaryButton,
    TertiaryButton,
-} from 'components/shared/Button/Button.styles'
+} from 'shared/components/Button/Button.styles'
 
 export const buttonMap = {
    'primary-button': PrimaryButton,
