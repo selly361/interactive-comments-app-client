@@ -1,14 +1,13 @@
+import { Error, StyledFieldset, StyledForm, StyledInput, StyledLabel } from 'shared/styles'
+
+import { Button } from 'shared/components'
 import { ILoginForm } from './Login.types'
-import React from 'react'
 import { useAuthContext } from 'hooks/useAuthContext'
 import { useForm } from 'react-hook-form'
 
 function LoginForm() {
-   const {
-      register,
-      handleSubmit,
-      formState: { errors },
-   } = useForm<ILoginForm>()
+   const {register, handleSubmit, formState} = useForm<ILoginForm>()
+   const { errors } = formState
 
    const { login, isAuthenticated } = useAuthContext()
 
@@ -16,14 +15,13 @@ function LoginForm() {
       login(data.email, data.password)
    }
 
-   if (isAuthenticated) {
-   }
+
 
    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-         <div>
-            <label htmlFor="email">Email</label>
-            <input
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+         <StyledFieldset>
+            <StyledLabel htmlFor="email">Email</StyledLabel>
+            <StyledInput
                type="text"
                id="email"
                {...register('email', {
@@ -34,12 +32,12 @@ function LoginForm() {
                   },
                })}
             />
-            {errors.email && <span>{errors.email.message}</span>}
-         </div>
+            {errors.email && <Error>{errors.email.message}</Error>}
+         </StyledFieldset>
 
-         <div>
-            <label htmlFor="password">Password</label>
-            <input
+         <StyledFieldset>
+            <StyledLabel htmlFor="password">Password</StyledLabel>
+            <StyledInput
                type="password"
                id="password"
                {...register('password', {
@@ -51,11 +49,10 @@ function LoginForm() {
                   },
                })}
             />
-            {errors.password && <span>{errors.password.message}</span>}
-         </div>
-
-         <button type="submit">Login</button>
-      </form>
+            {errors.password && <Error>{errors.password.message}</Error>}
+         </StyledFieldset>
+         <Button content="Submit" onClick={onSubmit} />
+      </StyledForm>
    )
 }
 
