@@ -1,7 +1,7 @@
 import AuthContextProvider, { AuthContext } from 'contexts/AuthContext'
+import { ErrorBoundary, Header } from 'components'
 import React, { Fragment } from 'react'
 
-import { ErrorBoundary } from 'components'
 import { GlobalStyles } from 'global/GlobalStyles'
 import { IProps } from './types'
 
@@ -10,7 +10,10 @@ function Wrapper({ children }: IProps) {
       <Fragment>
          <GlobalStyles />
          <ErrorBoundary>
-            <AuthContextProvider>{children}</AuthContextProvider>
+            <AuthContextProvider>
+               <Header />
+               {children}
+               </AuthContextProvider>
          </ErrorBoundary>
       </Fragment>
    )
