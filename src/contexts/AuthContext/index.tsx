@@ -15,12 +15,6 @@ function AuthContextProvider({ children }: IProps) {
    const [user, setUser] = useState<User | null>(null)
    const isAuthenticated = !!user
 
-   useEffect(() => {
-      const access_token = localStorage.getItem('access_token') as string
-      if (access_token) {
-         verifyAuth(access_token)
-      }
-   }, [])
 
    const login: ILogIn = async (email, password) => {
       try {
@@ -81,24 +75,6 @@ function AuthContextProvider({ children }: IProps) {
       }
    }
 
-   const verifyAuth = async (access_token: string) => {
-      const data = await fetch(`${URL}/verify-auth`, {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-         },
-
-         body: JSON.stringify({ access_token }),
-      })
-
-      const response = await data.json()
-
-      if (response.status == 'AUTHENTICATED') {
-         getUserData(access_token)
-      } else if (response.status == 'TOKEN_EXPIRED') {
-         await refreshToken()
-      }
-   }
 
    const getUserData = async (access_token: string) => {
       try {
