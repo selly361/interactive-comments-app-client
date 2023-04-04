@@ -1,5 +1,5 @@
 export interface IButtonProps {
    type?: 'primary-button' | 'secondary-button' | 'tertiary-button'
-   onClick: (args: any) => void
+   onClick: (args: unknown) => void
    content: string
 }

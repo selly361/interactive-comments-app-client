@@ -1,5 +1,5 @@
+import { createContext, useState } from 'react'
 import type { AuthContextProps, ILogIn, IProps, ISignUp, User } from './types'
-import { createContext, useEffect, useState } from 'react'
 
 const URL = process.env.REACT_APP_API_URL
 
@@ -8,13 +8,12 @@ export const AuthContext = createContext<AuthContextProps>({
    isAuthenticated: false,
    login: async () => {},
    logout: async () => {},
-   signup: async () => {}
+   signup: async () => {},
 })
 
 function AuthContextProvider({ children }: IProps) {
    const [user, setUser] = useState<User | null>(null)
    const isAuthenticated = !!user
-
 
    const login: ILogIn = async (email, password) => {
       try {
@@ -75,7 +74,6 @@ function AuthContextProvider({ children }: IProps) {
       }
    }
 
-
    const getUserData = async (access_token: string) => {
       try {
          const response = await fetch(`${URL}/user/data`, {
@@ -91,11 +89,7 @@ function AuthContextProvider({ children }: IProps) {
       }
    }
 
-   return (
-      <AuthContext.Provider value={{ user, isAuthenticated, login, logout, signup }}>
-         {children}
-      </AuthContext.Provider>
-   )
+   return <AuthContext.Provider value={{ user, isAuthenticated, login, logout, signup }}>{children}</AuthContext.Provider>
 }
 
 export default AuthContextProvider
