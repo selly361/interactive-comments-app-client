@@ -1,3 +1,6 @@
+import { Error, StyledFieldset, StyledForm, StyledInput, StyledLabel } from 'shared/styles'
+
+import { Button } from 'shared/components'
 import React from 'react'
 import { RegisterFormData } from "./Register.types"
 import { useAuthContext } from 'hooks/useAuthContext'
@@ -12,45 +15,45 @@ function RegisterForm() {
   })
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <div>
-        <label>Email</label>
-        <input {...register("email", {
+    <StyledForm onSubmit={onSubmitHandler}>
+      <StyledFieldset>
+        <StyledLabel>Email</StyledLabel>
+        <StyledInput {...register("email", {
           required: true,
           pattern: {
             value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             message: 'Invalid email format'
           }
         })} />
-        {errors.email && <span>{errors.email.message}</span>}
-      </div>
+        {errors.email && <Error>{errors.email.message}</Error>}
+      </StyledFieldset>
 
-      <div>
-        <label>Password</label>
-        <input {...register("password", {
+      <StyledFieldset>
+        <StyledLabel>Password</StyledLabel>
+        <StyledInput {...register("password", {
           required: true,
           pattern: {
             value: /^[a-zA-Z0-9]{5,20}$/,
             message: 'Password should be 5-20 alphanumeric characters'
           }
         })} />
-        {errors.password && <span>{errors.password.message}</span>}
-      </div>
+        {errors.password && <Error>{errors.password.message}</Error>}
+      </StyledFieldset>
 
-      <div>
-        <label>Username</label>
-        <input {...register("username", {
+      <StyledFieldset>
+        <StyledLabel>Username</StyledLabel>
+        <StyledInput {...register("username", {
           required: true,
           pattern: {
             value: /^[A-Za-z]\w{3,13}[A-Za-z0-9]$/,
             message: 'Username should be 3-14 alphanumeric characters starting with a letter'
           }
         })} />
-        {errors.username && <span>{errors.username.message}</span>}
-      </div>
+        {errors.username && <Error>{errors.username.message}</Error>}
+      </StyledFieldset>
 
-      <button type="submit">Register</button>
-    </form>
+      <Button content="Register" onClick={onSubmitHandler} />
+    </StyledForm>
   )
 }
 
