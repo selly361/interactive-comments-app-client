@@ -11,7 +11,7 @@ function Header() {
   return (
     <StyledHeader>
         <CommentIcon />
-        <GuestIcon />
+        {(isAuthenticated && user) ? <div dangerouslySetInnerHTML={{ __html: user?.profile_image }} /> : <GuestIcon />}
     </StyledHeader>
   )
 }
