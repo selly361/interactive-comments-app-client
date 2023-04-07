@@ -1,11 +1,12 @@
 import { LoginForm } from 'components/Forms'
 import React from 'react'
+import { StyledMain } from 'pages/styles'
 
 function LoginPage() {
   return (
-    <main>
+    <StyledMain>
       <LoginForm />
-    </main>
+    </StyledMain>
   )
 }
 

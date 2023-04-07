@@ -1,11 +1,12 @@
 import React from 'react'
 import { RegisterForm } from 'components/Forms'
+import { StyledMain } from 'pages/styles'
 
 function RegisterPage() {
    return (
-      <main>
+      <StyledMain>
          <RegisterForm />
-      </main>
+      </StyledMain>
    )
 }
 
