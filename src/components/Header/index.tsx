@@ -1,19 +1,27 @@
-import { CommentIcon, GuestIcon } from 'assets/icons'
+import { CommentIcon, GuestIcon, LogoutIcon } from 'assets/icons'
+import { Container, StyledHeader, UserName } from './Header.styles'
 
-import React from 'react'
-import { StyledHeader } from './Header.styles'
+import { Navigator } from "components"
 import { useAuthContext } from 'hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+   const { user, isAuthenticated } = useAuthContext()
 
-    const { user, isAuthenticated } = useAuthContext()
-    
-  return (
-    <StyledHeader>
-        <CommentIcon />
-        {(isAuthenticated && user) ? <div dangerouslySetInnerHTML={{ __html: user?.profile_image }} /> : <GuestIcon />}
-    </StyledHeader>
-  )
+   const navigate = useNavigate()
+
+
+   return (
+      <StyledHeader>
+         <CommentIcon onClick={() => navigate('/')} />
+         <Navigator />
+         <Container>
+            <UserName>{user?.username || 'Guest'}</UserName>
+            {isAuthenticated && user ? <div dangerouslySetInnerHTML={{ __html: user?.profile_image }} /> : <GuestIcon />}
+         </Container>
+      </StyledHeader>
+   )
 }
+
 
 export default Header
