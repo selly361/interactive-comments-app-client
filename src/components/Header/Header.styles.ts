@@ -1,15 +1,23 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
-    background-color: #5357B6;
-    width: 60vw;
-    margin: auto;
-    height: 48px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    margin-top: 5px;
-    justify-content: space-between;
-
+   background-color: #5357b6;
+   width: 100vw;
+   margin: auto;
+   height: 54px;
+   padding: 0 50px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 `
+
+export const Container = styled.div`
+   display: flex;
+   align-items: center;
+   gap: 10px;
+`
+
+export const UserName = styled.h3`
+   color: white;
+`
+
