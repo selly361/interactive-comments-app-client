@@ -18,7 +18,7 @@ function RegisterForm() {
     <StyledForm onSubmit={onSubmitHandler}>
       <StyledFieldset>
         <StyledLabel>Email</StyledLabel>
-        <StyledInput {...register("email", {
+        <StyledInput type="email" {...register("email", {
           required: true,
           pattern: {
             value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -27,19 +27,6 @@ function RegisterForm() {
         })} />
         {errors.email && <Error>{errors.email.message}</Error>}
       </StyledFieldset>
-
-      <StyledFieldset>
-        <StyledLabel>Password</StyledLabel>
-        <StyledInput {...register("password", {
-          required: true,
-          pattern: {
-            value: /^[a-zA-Z0-9]{5,20}$/,
-            message: 'Password should be 5-20 alphanumeric characters'
-          }
-        })} />
-        {errors.password && <Error>{errors.password.message}</Error>}
-      </StyledFieldset>
-
       <StyledFieldset>
         <StyledLabel>Username</StyledLabel>
         <StyledInput {...register("username", {
@@ -51,7 +38,17 @@ function RegisterForm() {
         })} />
         {errors.username && <Error>{errors.username.message}</Error>}
       </StyledFieldset>
-
+      <StyledFieldset>
+        <StyledLabel>Password</StyledLabel>
+        <StyledInput type="password" {...register("password", {
+          required: true,
+          pattern: {
+            value: /^[a-zA-Z0-9]{5,20}$/,
+            message: 'Password should be 5-20 alphanumeric characters'
+          }
+        })} />
+        {errors.password && <Error>{errors.password.message}</Error>}
+      </StyledFieldset>
       <Button content="Register" onClick={onSubmitHandler} />
     </StyledForm>
   )
